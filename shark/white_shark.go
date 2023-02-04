@@ -3,9 +3,11 @@ package shark
 import (
 	"fmt"
 	"math/rand"
-	"testdoubles/prey"
-	"testdoubles/simulator"
+
 	"time"
+
+	"github.com/Lelo88/GoTestDouble/prey"
+	"github.com/Lelo88/GoTestDouble/simulator"
 )
 
 func init() {

@@ -1,3 +1,3 @@
-module testdoubles
+module github.com/Lelo88/GoTestDouble
 
-go 1.16
+go 1.19
