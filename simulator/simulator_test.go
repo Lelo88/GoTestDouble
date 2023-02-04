@@ -11,6 +11,7 @@ type simulatorMock struct{
 	CanCatchbool 	bool
 	GetLinearF 		float64
 	Error 			error
+	Spy				bool
 }
 
 
@@ -19,6 +20,7 @@ func (s *simulatorMock) CanCatch(distance float64, speed float64, catchSpeed flo
 }
 
 func (s *simulatorMock) GetLinear(position [2]float64) float64 {
+	s.Spy = true
 	return s.GetLinearF
 }
 
@@ -91,10 +93,40 @@ func TestCanCatchAll(t *testing.T){
 func TestGetLinearAll(t *testing.T){
 
 	t.Run("getting linear", func(t *testing.T){
+		ser := simulatorMock{
+			GetLinearF: 4368,
+			Spy: true,
+		}
 
+		var mockFloat [2]float64
+
+		mockFloat[0] = 78
+		mockFloat[1] = 56
+
+		getline := ser.GetLinear(mockFloat)
+
+		mockfloatexpectation := mockFloat[0] * mockFloat[1]
+
+		assert.Equal(t,mockfloatexpectation,getline)
+		assert.True(t,ser.Spy)
 	})
 
 	t.Run("not getting linear", func(t *testing.T){
+		ser := simulatorMock{
+			GetLinearF: 13,
+			Spy: true,
+		}
 
+		var mockFloat [2]float64
+
+		mockFloat[0] = 78
+		mockFloat[1] = 56
+
+		getline := ser.GetLinear(mockFloat)
+
+		mockfloatexpectation := ser.GetLinearF
+
+		assert.NotEqual(t,mockfloatexpectation,getline)
+		assert.True(t,ser.Spy)
 	})
 }
