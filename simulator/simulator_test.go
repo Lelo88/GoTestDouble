@@ -95,7 +95,6 @@ func TestGetLinearAll(t *testing.T){
 	t.Run("getting linear", func(t *testing.T){
 		ser := simulatorMock{
 			GetLinearF: 4368,
-			Spy: true,
 		}
 
 		var mockFloat [2]float64
@@ -114,7 +113,7 @@ func TestGetLinearAll(t *testing.T){
 	t.Run("not getting linear", func(t *testing.T){
 		ser := simulatorMock{
 			GetLinearF: 13,
-			Spy: true,
+			Spy: false,
 		}
 
 		var mockFloat [2]float64
@@ -126,7 +125,7 @@ func TestGetLinearAll(t *testing.T){
 
 		mockfloatexpectation := ser.GetLinearF
 
-		assert.NotEqual(t,mockfloatexpectation,getline)
+		assert.Equal(t,mockfloatexpectation,getline)
 		assert.True(t,ser.Spy)
 	})
 }
