@@ -22,7 +22,10 @@ func TestHunt(t *testing.T){
 		
 		//ahora vamos a inicializar una presa mockeada y no harcodeada
 		prey := TunaMock.NewTunaMock()
+		prey.Reset()
 		prey.On("GetSpeed").Return(0.0)
+		
+		ms.Reset()
 		ms.On("CanCatch", mock.Anything, mock.Anything, mock.Anything).Return(true)
 		//on le indica al mock como tiene que reaccionar ante ese resultado
 		
@@ -45,7 +48,10 @@ func TestHunt(t *testing.T){
 
 	t.Run("error", func(t *testing.T){
 		prey := TunaMock.NewTunaMock()
+		prey.Reset()
 		prey.On("GetSpeed").Return(0.0)
+		
+		ms.Reset()
 		ms.On("CanCatch", mock.Anything, mock.Anything, mock.Anything).Return(false)
 		//on le indica al mock como tiene que reaccionar ante ese resultado
 		

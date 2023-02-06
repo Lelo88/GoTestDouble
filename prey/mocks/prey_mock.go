@@ -17,3 +17,7 @@ func (t *tunaMock) GetSpeed() float64{
 	args := t.Called()
 	return args.Get(0).(float64)
 }
+
+func (t *tunaMock) Reset() {
+	t.Mock = mock.Mock{}
+}
