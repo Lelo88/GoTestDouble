@@ -24,9 +24,6 @@ func (s *simulatorMock) GetLinear(position [2]float64) float64 {
 	return s.GetLinearF
 }
 
-func (s *simulatorMock) ErrorIn() error {
-	return s.Error
-}
 
 func TestCanCatchAll(t *testing.T){
 	t.Run("prey catched true", func(t *testing.T){

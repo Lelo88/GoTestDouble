@@ -28,7 +28,7 @@ func TestHuntOrNot(t *testing.T){
 			WhiteShark: whiteShark{
 				speed: 14,
 				position: [2]float64{12,12},
-				simulator: NewWhiteSharkService().WhiteShark.simulator.CanCatch(),
+				//simulator: NewWhiteSharkService().WhiteShark.simulator.CanCatch(),
 			},
 		}
 
