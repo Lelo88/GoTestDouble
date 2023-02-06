@@ -26,7 +26,7 @@ func TestHuntOrNot(t *testing.T){
 		ser := mockWhiteShark{
 			Err: nil,
 			WhiteShark: whiteShark{
-				speed: 12,
+				speed: 14,
 				position: [2]float64{12,12},
 				simulator: NewWhiteSharkService().WhiteShark.simulator,
 			},
@@ -38,7 +38,6 @@ func TestHuntOrNot(t *testing.T){
 
 		assert.NoError(t, hunted)
 		assert.Equal(t, nil, hunted)
-
 	})
 
 	t.Run("not hunted", func(t *testing.T){
