@@ -3,44 +3,22 @@ package shark
 import (
 	"testing"
 
-	"github.com/Lelo88/GoTestDouble/prey"
-	"github.com/stretchr/testify/assert"
+	"github.com/Lelo88/GoTestDouble/simulator/mocks"
 )
 
-type mockWhiteShark struct{
-	Err error
-	WhiteShark whiteShark
-}
+func TestHunt(t *testing.T){
+	//arrante8
+	ms := mocks.NewCatchSimulatorMock()
+	sh := CreateWhiteShark(ms) //acepta los metodos de la nueva interface
 
-func NewWhiteSharkService() *mockWhiteShark {
-	return &mockWhiteShark{}
-}
 
-func (m *mockWhiteShark) Hunt(prey prey.Prey ) error{
-	return m.Err
-}
 
-func TestHuntOrNot(t *testing.T){
-	
-	t.Run("hunted", func(t *testing.T){
-		ser := mockWhiteShark{
-			Err: nil,
-			WhiteShark: whiteShark{
-				speed: 14,
-				position: [2]float64{12,12},
-				//simulator: NewWhiteSharkService().WhiteShark.simulator.CanCatch(),
-			},
-		}
+	//act 
+	t.Run("ok", func(t *testing.T){
 
-		newTuna := prey.CreateTuna()
-
-		hunted :=ser.Hunt(newTuna)
-
-		assert.NoError(t, hunted)
-		assert.Equal(t, nil, hunted)
 	})
 
-	t.Run("not hunted", func(t *testing.T){
+	t.Run("error", func(t *testing.T){
 
 	})
 }

@@ -1,4 +1,4 @@
-package shark
+	package shark
 
 import (
 	"fmt"
@@ -23,6 +23,7 @@ type whiteShark struct {
 	simulator simulator.CatchSimulator
 }
 
+//verifica si un tiburon puede cazar a una presa de acuerdo a su velocidad y posicion 
 func (w *whiteShark) Hunt(prey prey.Prey) error {
 	if w.simulator.CanCatch(w.simulator.GetLinearDistance(w.position), w.speed, prey.GetSpeed()) {
 		fmt.Println("ñam ñam")
